@@ -1,0 +1,89 @@
+esphome:
+  name: panel-esp32s3
+  friendly_name: "Panel Freenove 4.0"
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: esp-idf
+
+psram:
+  mode: octal
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+api:
+  encryption:
+    key: !secret api_key
+
+ota:
+  platform: esphome
+
+logger:
+
+spi:
+  clk_pin: GPIO12
+  mosi_pin: GPIO11
+
+i2c:
+  sda: GPIO16
+  scl: GPIO15
+  scan: true
+
+output:
+  - platform: ledc
+    pin: GPIO45
+    id: backlight_pin
+
+light:
+  - platform: monochromatic
+    output: backlight_pin
+    name: "Brillo Pantalla"
+    id: backlight
+    restore_mode: ALWAYS_ON
+
+display:
+  - platform: ili9xxx
+    model: ST7796
+    id: my_display
+    cs_pin: GPIO10
+    dc_pin: GPIO46
+    invert_colors: true
+    dimensions:
+      width: 320
+      height: 480
+    rotation: 0
+
+touchscreen:
+  - platform: ft5x06
+    id: my_touch
+    display: my_display
+    address: 0x38
+    interrupt_pin: GPIO17
+
+lvgl:
+  displays:
+    - my_display
+  touchscreens:
+    - my_touch
+  pages:
+    - id: main_page
+      widgets:
+        - label:
+            text: "Panel Freenove 4.0"
+            align: TOP_MID
+            y: 30
+        - button:
+            align: CENTER
+            width: 200
+            height: 60
+            widgets:
+              - label:
+                  text: "Luz Principal"
+            on_click:
+              - homeassistant.service:
+                  service: light.toggle
+                  data:
+                    entity_id: light.luz_salon
