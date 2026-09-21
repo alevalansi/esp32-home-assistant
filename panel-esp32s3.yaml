@@ -47,7 +47,7 @@ light:
 binary_sensor:
   - platform: homeassistant
     id: bs_salon1
-    entity_id: switch.luces_del_salon_interruptor_1
+    entity_id: light.salon_luces_del_salon_interruptor_1
     on_state:
       - if:
           condition:
@@ -80,23 +80,6 @@ binary_sensor:
                 state:
                   checked: false
   - platform: homeassistant
-    id: bs_entrada2
-    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_2
-    on_state:
-      - if:
-          condition:
-            lambda: "return x;"
-          then:
-            - lvgl.widget.update:
-                id: btn_entrada2
-                state:
-                  checked: true
-          else:
-            - lvgl.widget.update:
-                id: btn_entrada2
-                state:
-                  checked: false
-  - platform: homeassistant
     id: bs_entrada1
     entity_id: light.entrada_las_luces_de_la_entrada_interruptor_1
     on_state:
@@ -114,8 +97,144 @@ binary_sensor:
                 state:
                   checked: false
   - platform: homeassistant
+    id: bs_entrada2
+    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_2
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_entrada2
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_entrada2
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_dormitorio
+    entity_id: light.dormitorio_luz_del_dormitorio_interruptor_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_dormitorio
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_dormitorio
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_velador
+    entity_id: light.dormitorio_el_velador_enchufe_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_velador
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_velador
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_bano1
+    entity_id: light.bano_luces_del_bano_interruptor_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_bano1
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_bano1
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_bano2
+    entity_id: light.bano_luces_del_bano_interruptor_2
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_bano2
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_bano2
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_bano3
+    entity_id: light.bano_luces_del_bano_interruptor_3
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_bano3
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_bano3
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_balcon1
+    entity_id: light.balcon_luces_del_balcon_y_sillon_interruptor_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_balcon1
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_balcon1
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_balcon2
+    entity_id: light.balcon_luces_del_balcon_y_sillon_interruptor_2
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_balcon2
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_balcon2
+                state:
+                  checked: false
+  - platform: homeassistant
     id: bs_cocina
-    entity_id: switch.luz_de_la_cocina_interruptor_1
+    entity_id: light.cocina_luz_de_la_cocina_interruptor_1
     on_state:
       - if:
           condition:
@@ -131,20 +250,54 @@ binary_sensor:
                 state:
                   checked: false
   - platform: homeassistant
-    id: bs_velador
-    entity_id: switch.el_velador_enchufe_1
+    id: bs_agua
+    entity_id: switch.agua_caliente_interruptor_1
     on_state:
       - if:
           condition:
             lambda: "return x;"
           then:
             - lvgl.widget.update:
-                id: btn_velador
+                id: btn_agua
                 state:
                   checked: true
           else:
             - lvgl.widget.update:
-                id: btn_velador
+                id: btn_agua
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_estufa
+    entity_id: switch.estufa_interruptor
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_estufa
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_estufa
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_riego
+    entity_id: switch.riego_enchufe_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_riego
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_riego
                 state:
                   checked: false
 
@@ -180,106 +333,291 @@ lvgl:
         bg_color: 0x00AA00
         text_color: 0xFFFFFF
   pages:
-    - id: main_page
+    - id: page_salon
       widgets:
         - label:
-            text: "Panel Freenove 4.0"
+            text: "Salon / Entrada  1/3"
             align: TOP_MID
-            y: 10
+            y: 8
             text_color: 0xFFFFFF
         - button:
             id: btn_salon1
             x: 10
-            y: 50
+            y: 45
             width: 145
             height: 90
             checkable: true
             widgets:
               - label:
                   text: "Salon 1"
-                  text_color: 0xFFFFFF
             on_click:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
-                    entity_id: switch.luces_del_salon_interruptor_1
+                    entity_id: light.salon_luces_del_salon_interruptor_1
         - button:
             id: btn_salon2
             x: 165
-            y: 50
+            y: 45
             width: 145
             height: 90
             checkable: true
             widgets:
               - label:
                   text: "Salon 2"
-                  text_color: 0xFFFFFF
             on_click:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
                     entity_id: light.salon_luces_del_salon_interruptor_2
         - button:
-            id: btn_entrada2
-            x: 10
-            y: 155
-            width: 145
-            height: 90
-            checkable: true
-            widgets:
-              - label:
-                  text: "Entrada 2"
-                  text_color: 0xFFFFFF
-            on_click:
-              - homeassistant.service:
-                  service: homeassistant.toggle
-                  data:
-                    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_2
-        - button:
             id: btn_entrada1
-            x: 165
-            y: 155
+            x: 10
+            y: 145
             width: 145
             height: 90
             checkable: true
             widgets:
               - label:
                   text: "Entrada 1"
-                  text_color: 0xFFFFFF
             on_click:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
                     entity_id: light.entrada_las_luces_de_la_entrada_interruptor_1
         - button:
-            id: btn_cocina
-            x: 10
-            y: 260
+            id: btn_entrada2
+            x: 165
+            y: 145
             width: 145
             height: 90
             checkable: true
             widgets:
               - label:
-                  text: "Cocina"
-                  text_color: 0xFFFFFF
+                  text: "Entrada 2"
             on_click:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
-                    entity_id: switch.luz_de_la_cocina_interruptor_1
+                    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_2
+        - button:
+            x: 170
+            y: 400
+            width: 140
+            height: 60
+            widgets:
+              - label:
+                  text: "Dormitorio >"
+            on_click:
+              - lvgl.page.show: page_dormitorio
+
+    - id: page_dormitorio
+      widgets:
+        - label:
+            text: "Dormitorio / Bano  2/3"
+            align: TOP_MID
+            y: 8
+            text_color: 0xFFFFFF
+        - button:
+            id: btn_dormitorio
+            x: 10
+            y: 45
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Dormitorio"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.dormitorio_luz_del_dormitorio_interruptor_1
         - button:
             id: btn_velador
             x: 165
-            y: 260
+            y: 45
             width: 145
             height: 90
             checkable: true
             widgets:
               - label:
                   text: "Velador"
-                  text_color: 0xFFFFFF
             on_click:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
-                    entity_id: switch.el_velador_enchufe_1
+                    entity_id: light.dormitorio_el_velador_enchufe_1
+        - button:
+            id: btn_bano1
+            x: 10
+            y: 145
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Bano 1"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.bano_luces_del_bano_interruptor_1
+        - button:
+            id: btn_bano2
+            x: 165
+            y: 145
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Bano 2"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.bano_luces_del_bano_interruptor_2
+        - button:
+            id: btn_bano3
+            x: 10
+            y: 245
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Bano 3"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.bano_luces_del_bano_interruptor_3
+        - button:
+            x: 10
+            y: 400
+            width: 140
+            height: 60
+            widgets:
+              - label:
+                  text: "< Salon"
+            on_click:
+              - lvgl.page.show: page_salon
+        - button:
+            x: 170
+            y: 400
+            width: 140
+            height: 60
+            widgets:
+              - label:
+                  text: "Balcon >"
+            on_click:
+              - lvgl.page.show: page_balcon
+
+    - id: page_balcon
+      widgets:
+        - label:
+            text: "Balcon / Cocina  3/3"
+            align: TOP_MID
+            y: 8
+            text_color: 0xFFFFFF
+        - button:
+            id: btn_balcon1
+            x: 10
+            y: 45
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Balcon 1"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.balcon_luces_del_balcon_y_sillon_interruptor_1
+        - button:
+            id: btn_balcon2
+            x: 165
+            y: 45
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Balcon 2"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.balcon_luces_del_balcon_y_sillon_interruptor_2
+        - button:
+            id: btn_cocina
+            x: 10
+            y: 145
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Cocina"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.cocina_luz_de_la_cocina_interruptor_1
+        - button:
+            id: btn_agua
+            x: 165
+            y: 145
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Agua Cal."
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: switch.agua_caliente_interruptor_1
+        - button:
+            id: btn_estufa
+            x: 10
+            y: 245
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Estufa"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: switch.estufa_interruptor
+        - button:
+            id: btn_riego
+            x: 165
+            y: 245
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Riego"
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: switch.riego_enchufe_1
+        - button:
+            x: 10
+            y: 400
+            width: 140
+            height: 60
+            widgets:
+              - label:
+                  text: "< Dormitorio"
+            on_click:
+              - lvgl.page.show: page_dormitorio
