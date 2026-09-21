@@ -44,6 +44,110 @@ light:
     id: backlight
     restore_mode: ALWAYS_ON
 
+binary_sensor:
+  - platform: homeassistant
+    id: bs_salon1
+    entity_id: switch.luces_del_salon_interruptor_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_salon1
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_salon1
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_salon2
+    entity_id: light.salon_luces_del_salon_interruptor_2
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_salon2
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_salon2
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_entrada2
+    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_2
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_entrada2
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_entrada2
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_entrada1
+    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_entrada1
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_entrada1
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_cocina
+    entity_id: switch.luz_de_la_cocina_interruptor_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_cocina
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_cocina
+                state:
+                  checked: false
+  - platform: homeassistant
+    id: bs_velador
+    entity_id: switch.el_velador_enchufe_1
+    on_state:
+      - if:
+          condition:
+            lambda: "return x;"
+          then:
+            - lvgl.widget.update:
+                id: btn_velador
+                state:
+                  checked: true
+          else:
+            - lvgl.widget.update:
+                id: btn_velador
+                state:
+                  checked: false
+
 display:
   - platform: ili9xxx
     model: ST7796
@@ -55,7 +159,6 @@ display:
       width: 320
       height: 480
     rotation: 0
-
 
 touchscreen:
   - platform: ft5x06
@@ -69,22 +172,114 @@ lvgl:
     - my_display
   touchscreens:
     - my_touch
+  theme:
+    button:
+      bg_color: 0x444444
+      text_color: 0xFFFFFF
+      checked:
+        bg_color: 0x00AA00
+        text_color: 0xFFFFFF
   pages:
     - id: main_page
       widgets:
         - label:
             text: "Panel Freenove 4.0"
             align: TOP_MID
-            y: 30
+            y: 10
+            text_color: 0xFFFFFF
         - button:
-            align: CENTER
-            width: 200
-            height: 60
+            id: btn_salon1
+            x: 10
+            y: 50
+            width: 145
+            height: 90
+            checkable: true
             widgets:
               - label:
-                  text: "Luz Principal"
+                  text: "Salon 1"
+                  text_color: 0xFFFFFF
             on_click:
               - homeassistant.service:
-                  service: switch.toggle
+                  service: homeassistant.toggle
                   data:
                     entity_id: switch.luces_del_salon_interruptor_1
+        - button:
+            id: btn_salon2
+            x: 165
+            y: 50
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Salon 2"
+                  text_color: 0xFFFFFF
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.salon_luces_del_salon_interruptor_2
+        - button:
+            id: btn_entrada2
+            x: 10
+            y: 155
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Entrada 2"
+                  text_color: 0xFFFFFF
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_2
+        - button:
+            id: btn_entrada1
+            x: 165
+            y: 155
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Entrada 1"
+                  text_color: 0xFFFFFF
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: light.entrada_las_luces_de_la_entrada_interruptor_1
+        - button:
+            id: btn_cocina
+            x: 10
+            y: 260
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Cocina"
+                  text_color: 0xFFFFFF
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: switch.luz_de_la_cocina_interruptor_1
+        - button:
+            id: btn_velador
+            x: 165
+            y: 260
+            width: 145
+            height: 90
+            checkable: true
+            widgets:
+              - label:
+                  text: "Velador"
+                  text_color: 0xFFFFFF
+            on_click:
+              - homeassistant.service:
+                  service: homeassistant.toggle
+                  data:
+                    entity_id: switch.el_velador_enchufe_1
