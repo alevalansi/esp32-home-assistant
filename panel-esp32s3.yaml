@@ -56,6 +56,7 @@ display:
       height: 480
     rotation: 0
 
+
 touchscreen:
   - platform: ft5x06
     id: my_touch
@@ -84,6 +85,6 @@ lvgl:
                   text: "Luz Principal"
             on_click:
               - homeassistant.service:
-                  service: light.toggle
+                  service: switch.toggle
                   data:
-                    entity_id: light.luz_salon
+                    entity_id: switch.luces_del_salon_interruptor_1
